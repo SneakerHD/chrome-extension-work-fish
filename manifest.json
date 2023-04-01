@@ -1,0 +1,68 @@
+{
+	"manifest_version": 3,
+	"name": "聚核助手",
+	"version": "0.0.1",
+	"description": "用于每日提醒的小插件",
+	"icons": {
+		"16": "static/images/icon16.png",
+		"32": "static/images/icon48.png",
+		"48": "static/images/icon128.png",
+		"128": "static/images/icon200.png"
+	},
+	"background": {
+		"service_worker": "js/background.js",
+		"type": "module"
+	},
+	"options_page": "pages/options.html",
+	"action": {
+		"default_icon": "static/images/icon16.png",
+		"default_title": "做您身边的健康小助手",
+		"default_popup": "pages/popup.html"
+	},
+	"content_scripts": [ {
+		"js": [ "js/utils.js","js/index.js", "js/avatar.js" ],
+		"matches": [ "https://juejin.cn/*" ],
+		"run_at": "document_end"
+	 } ],
+	 "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens popup.html"
+    }
+  },
+	"permissions": [
+		"contextMenus",
+		"storage",
+		"declarativeContent",
+		"activeTab",
+		"tabs",
+		"webRequest",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+		"notifications"
+	],
+	"declarative_net_request" : {
+    "rule_resources" : [{
+			"id": "wxChrome",
+			"enabled": false,
+			"path": "wxChrome.json"
+		}]
+  },
+	"optional_permissions": [
+		"*://*/*",
+		"http://*/*",
+		"https://*/*"
+	],
+	"host_permissions": [
+		"declarativeNetRequest",
+		"webRequest"
+	],
+	"optional_host_permissions": [
+		"*://*/*",
+		"http://*/*",
+		"https://*/*"
+	]
+}

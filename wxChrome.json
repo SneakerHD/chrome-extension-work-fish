@@ -1,0 +1,26 @@
+[
+  {
+    "id" : 1,
+    "priority": 1,
+    "action" : { 
+      "type" : "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "extspam",
+          "operation": "set",
+          "value": "Go8FCIkFEokFCggwMDAwMDAwMRAGGvAESySibk50w5Wb3uTl2c2h64jVVrV7gNs06GFlWplHQbY"
+        },
+        {
+          "header": "clientVersion",
+          "operation": "set",
+          "value": "2.0.0"
+        }
+      ]
+     },
+    "condition" : {
+      "urlFilter" : "/cgi-bin/mmwebwx-bin/webwxnewloginpage",
+      "domains" : ["https://wx.qq.com/*", "https://web.wechat.com/*", "https://wx2.qq.com/*", "https://wx8.qq.com/*"],
+      "resourceTypes" : ["main_frame"]
+    }
+  }
+]
